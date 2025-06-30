@@ -37,9 +37,10 @@ const addNote = async (title, description, tag) => {
 
   const json = await response.json();
   
-
+console.log("Response from addNote:", json);
   
-  setNotes((prevNotes) => [...prevNotes, json]);
+  // setNotes((prevNotes) => [...prevNotes, json]);
+  getNotes();
 };
 
   // Delete a note
