@@ -50,7 +50,7 @@ const NoteState = (props) => {
       },
       // Automatically converted to "username=example&password=password"
     });
-    const json = await response.json();
+    
     
     const newNotes = notes.filter((note) => {
       return note._id !== id;
@@ -61,7 +61,7 @@ const NoteState = (props) => {
   // Edit a note
   const editNote = async (id, title, description, tag) => {
     //TODO API call
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
