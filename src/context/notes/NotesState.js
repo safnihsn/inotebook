@@ -24,20 +24,24 @@ const NoteState = (props) => {
   };
 
   // Add a note
-  const addNote = async (title, description, tag) => {
-    //API call
-    const response = await fetch(`${host}/api/notes/addnotes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token":
-          localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ title, description, tag }),
-    });
-    const json = await response.json();
-    setNotes(notes.concat(json));
-  };
+const addNote = async (title, description, tag) => {
+  // API call
+  const response = await fetch(`${host}/api/notes/addnotes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+    body: JSON.stringify({ title, description, tag }),
+  });
+
+  const json = await response.json();
+  console.log("API returned:", json); // Optional debug log
+
+  // Use functional update to avoid stale state
+  setNotes((prevNotes) => [...prevNotes, json]);
+};
+
   // Delete a note
   const deleteNote = async (id) => {
     //API call
