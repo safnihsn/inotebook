@@ -36,9 +36,9 @@ const addNote = async (title, description, tag) => {
   });
 
   const json = await response.json();
-  console.log("API returned:", json); // Optional debug log
+  
 
-  // Use functional update to avoid stale state
+  
   setNotes((prevNotes) => [...prevNotes, json]);
 };
 
