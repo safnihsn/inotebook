@@ -12,6 +12,20 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.custom-navbar{
+  background: rgba(16,137,141,0.4);
+  
+}
+.navbar-brand {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar-brand:hover {
+  color: #4f6268 !important; 
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -27,6 +41,14 @@
 .App-link {
   color: #61dafb;
 }
+.custom-btn{
+  background: #A6896F;
+  color: white;
+  font-weight: bold;
+}
+.custom-btn:hover{
+  background: #695544;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +58,13 @@
     transform: rotate(360deg);
   }
 }
+
+i{
+  cursor: pointer;
+}
+
+body {
+  background: linear-gradient(to right, #ffffff, #f0f4ff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
