@@ -1,5 +1,5 @@
 import "../Home.css";
-import landingImage from "../assets/noemi-macavei-katocz-fSB5tMpXc9Q-unsplash.jpg";
+
 import Notes from "./Notes";
 
 const Home = ({ showAlert }) => {
