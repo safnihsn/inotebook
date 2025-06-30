@@ -29,7 +29,8 @@ iNotebook is a full-stack MERN (MongoDB, Express, React, Node.js) application th
 ## Live Demo
 
 - [https://1inotebook1.netlify.app/](https://1inotebook1.netlify.app/)
-- Backend: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
+![{19A56352-BEF7-4E61-8E74-6225D04AD3CA}](https://github.com/user-attachments/assets/2bd7fa75-248c-48e8-a003-247cf65fdb6b)
+
 
 ## Author
 Jagriti Kanwar
