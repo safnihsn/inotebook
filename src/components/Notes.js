@@ -156,11 +156,11 @@ const Notes = (props) => {
           {notes.length === 0 && "No notes to display."}
         </div>
         
-        {notes.map((notes) => {
-          return (
-            <Noteitem key={notes._id} updateNote={updateNote} showAlert={props.showAlert} note={notes} />
-          );
-        })}
+        {notes.map((note) => {
+  return (
+    <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
+  );
+})}
       </div>
     </>
   );
