@@ -51,7 +51,7 @@ const NoteState = (props) => {
       // Automatically converted to "username=example&password=password"
     });
     const json = await response.json();
-    console.log(json);
+    
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
