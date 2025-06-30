@@ -16,7 +16,7 @@ const Notes = (props) => {
       navigate("/login");
     }
     
-  }, []);
+  }, [getNotes]);
 
   const [note, setNote] = useState({
     id: "",
