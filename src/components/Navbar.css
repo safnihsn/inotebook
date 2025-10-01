@@ -1,0 +1,151 @@
+/* Base Theme (Light Mode) */
+body {
+  background: #f9fafb;
+  color: #1f2937;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Navbar light/dark */
+.custom-navbar {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+}
+
+body.dark-mode .custom-navbar {
+  background: linear-gradient(90deg, #1f2937, #111827);
+}
+
+/* Links */
+.nav-link {
+  color: #f3f4f6 !important;
+}
+
+body.dark-mode .nav-link {
+  color: #d1d5db !important;
+}
+
+.active-link::after {
+  background: #facc15;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* Buttons adapt */
+.nav-btn {
+  background: #facc15;
+  color: #1e293b;
+}
+
+body.dark-mode .nav-btn {
+  background: #fbbf24;
+  color: #111827;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+}
+
+body.dark-mode .logout-btn {
+  background: #dc2626;
+}
+
+/* Navbar container */
+.custom-navbar {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  padding: 0.8rem 1.2rem;
+}
+
+/* Brand text */
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff !important;
+}
+
+.highlight {
+  color: #e0f2fe;
+}
+
+/* Nav links */
+.nav-link {
+  position: relative;
+  color: #f3f4f6 !important;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.active-link {
+  font-weight: 600;
+}
+
+.active-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #facc15;
+  border-radius: 2px;
+  margin-top: 4px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Buttons */
+.nav-btn {
+  background: #facc15;
+  border: none;
+  color: #1e293b;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+}
+
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
