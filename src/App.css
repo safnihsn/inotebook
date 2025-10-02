@@ -20,12 +20,25 @@
   font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   font-style: normal;
+  align-items: center;
 }
 
 .navbar-brand:hover {
-  color: #4f6268 !important; 
+  color: #03546c !important; 
+  text-decoration: underline;
+  font-weight: 900;
+  transform: scale(1.1);
 }
 
+ 
+
+.nav-item:hover {
+  color: #03546c !important; 
+  text-decoration: underline;
+  font-weight: 600;
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+}
 
 .App-header {
   background-color: #282c34;
@@ -66,5 +79,16 @@ i{
 body {
   background: linear-gradient(to right, #ffffff, #f0f4ff);
   font-family: 'Segoe UI', sans-serif;
+}
+
+.Footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgb(255, 255, 255);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
