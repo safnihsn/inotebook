@@ -11,3 +11,97 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Global transitions */
+body {
+  background: #f9fafb;
+  color: #1f2937;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Inputs */
+input.form-control {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode input.form-control {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+}
+
+/* Buttons */
+.btn-primary, .btn-login, .btn-signup {
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .btn-primary, 
+body.dark-mode .btn-login, 
+body.dark-mode .btn-signup {
+  background: #2563eb;
+  color: #f3f4f6;
+}
+
+/* Cards / Containers */
+.notes-wrapper, .about-card, .login-card, .signup-card {
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .notes-wrapper,
+body.dark-mode .about-card,
+body.dark-mode .login-card,
+body.dark-mode .signup-card {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+
+/* Navbar (already handled in Navbar.css) */
+body.dark-mode .custom-navbar {
+  background: linear-gradient(90deg, #1f2937, #111827);
+}
+
+/* Paragraphs */
+p {
+  color: #374151;
+}
+
+body.dark-mode p {
+  color: #d1d5db;
+}
+
+/* Alerts (optional for dark mode) */
+.alert {
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .alert {
+  color: #111827;
+}
+
+.note-card {
+  background: #ffffff;
+  color: #111827;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .note-card {
+  background: #1f2937;
+  color: #f3f4f6;
+}
