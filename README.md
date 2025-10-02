@@ -182,4 +182,5 @@ For questions or feedback, please contact:
 - **Author**: [Your Name](https://github.com/safnihsn)
 - **Email**: your.email@example.com
 
+ 
 For the latest updates and releases, visit [Releases](https://github.com/safnihsn/inotebook/releases).
