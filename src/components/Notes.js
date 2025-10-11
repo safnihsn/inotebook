@@ -59,7 +59,7 @@ const Notes = (props) => {
         data-bs-target="#exampleModal"
         ref={ref}
       >
-        Launch demo modal
+        Launch demo model
       </button>
 
       <div
@@ -73,7 +73,7 @@ const Notes = (props) => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Edit Note
+                Edit Notes
               </h1>
               <button
                 type="button"
@@ -85,6 +85,7 @@ const Notes = (props) => {
             <div className="modal-body">
               <form className="my-3">
                 <div className="mb-3">
+
                   <label htmlFor="etitle" className="form-label">
                     Title
                   </label>
@@ -97,6 +98,7 @@ const Notes = (props) => {
                     aria-describedby="emailHelp"
                     onChange={onChange}
                     required
+                    placeholder="Enter Title name here..."
                   />
                 </div>
                 <div className="mb-3">
@@ -111,6 +113,7 @@ const Notes = (props) => {
                     value={note.edescription}
                     onChange={onChange}
                     required
+                    placeholder="Enter Description here..."
                   />
                 </div>
 
@@ -125,6 +128,7 @@ const Notes = (props) => {
                     name="etag"
                     value={note.etag}
                     onChange={onChange}
+                    placeholder="Enter Tag here..."
                   />
                 </div>
               </form>
