@@ -1,22 +1,21 @@
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 import noteContext from "../context/notes/noteContext";
-import { useContext, useRef, useState } from "react";
-import { useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const context = useContext(noteContext);
   let navigate = useNavigate();
   const { notes, getNotes, editNote } = context;
+
   useEffect(() => {
-    if(localStorage.getItem("token")){
+    if (localStorage.getItem("token")) {
       getNotes();
-    }else{
+    } else {
       navigate("/login");
     }
-    
-  }, [getNotes,navigate]);
+  }, [getNotes, navigate]);
 
   const [note, setNote] = useState({
     id: "",
@@ -24,15 +23,17 @@ const Notes = (props) => {
     edescription: "",
     etag: "",
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const updateNote = (currentNote) => {
-    ref.current.click();
     setNote({
       id: currentNote._id,
       etitle: currentNote.title,
       edescription: currentNote.description,
       etag: currentNote.tag,
     });
-    
+    setIsModalOpen(true);
   };
 
   const onChange = (e) => {
@@ -42,127 +43,135 @@ const Notes = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag);
-    refClose.current.click();
-    props.showAlert("Updated successfully","success");
+    setIsModalOpen(false);
+    props.showAlert("Updated successfully", "success");
   };
 
-  const ref = useRef(null);
-  const refClose = useRef(null);
   return (
-    <>
-      <Addnote showAlert={props.showAlert}/>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <Addnote showAlert={props.showAlert} />
 
-      <button
-        type="button"
-        className="btn btn-primary d-none"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        ref={ref}
-      >
-        Launch demo modal
-      </button>
-
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Edit Note
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+      {/* Modern Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-800">Edit Note</h2>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  type="button"
+                >
+                  <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="modal-body">
-              <form className="my-3">
-                <div className="mb-3">
-                  <label htmlFor="etitle" className="form-label">
+
+            <div className="p-6">
+              <form onSubmit={handleClick} className="space-y-4">
+                <div>
+                  <label htmlFor="etitle" className="block text-sm font-medium text-gray-700 mb-2">
                     Title
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                     id="etitle"
                     name="etitle"
                     value={note.etitle}
-                    aria-describedby="emailHelp"
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="edescription" className="form-label">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="edescription"
-                    name="edescription"
-                    value={note.edescription}
                     onChange={onChange}
                     required
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label htmlFor="etag" className="form-label">
+                <div>
+                  <label htmlFor="edescription" className="block text-sm font-medium text-gray-700 mb-2">
+                    Description
+                  </label>
+                  <textarea
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none"
+                    id="edescription"
+                    name="edescription"
+                    value={note.edescription}
+                    onChange={onChange}
+                    rows="4"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="etag" className="block text-sm font-medium text-gray-700 mb-2">
                     Tag
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
                     id="etag"
                     name="etag"
                     value={note.etag}
                     onChange={onChange}
                   />
                 </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    disabled={note.etitle.length < 1 || note.edescription.length < 1}
+                  >
+                    Update Note
+                  </button>
+                </div>
               </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary d-none"
-                data-bs-dismiss="modal"
-                ref={refClose}
-              >
-                Close
-              </button>
-              <button
-                onClick={handleClick}
-                type="button"
-                className="btn btn-primary"
-                disabled={note.etitle<1 || note.edescription<1}
-              >
-                Update Note
-              </button>
             </div>
           </div>
         </div>
+      )}
+
+      <div className="mb-6">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">Your Notes</h2>
+        <p className="text-gray-600">Manage all your thoughts in one place</p>
       </div>
-      <div className="row my-3">
-        <h2>Your notes</h2>
-        <div className="container">
-          {notes.length === 0 && "No notes to display."}
+
+      {notes.length === 0 ? (
+        <div className="text-center py-16 bg-gray-50 rounded-2xl">
+          <svg className="w-24 h-24 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 className="text-xl font-semibold text-gray-600 mb-2">No notes yet</h3>
+          <p className="text-gray-500">Start by creating your first note above!</p>
         </div>
-        
-        {notes.map((note) => {
-  return (
-    <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
-  );
-})}
-      </div>
-    </>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {notes.map((note) => {
+            return (
+              <Noteitem
+                key={note._id}
+                note={note}
+                updateNote={updateNote}
+                showAlert={props.showAlert}
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 };
 
