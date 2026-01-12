@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css"; // new CSS
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
@@ -9,6 +10,7 @@ const Signup = (props) => {
     cpassword: "",
   });
   let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (credentials.password !== credentials.cpassword) {
@@ -16,25 +18,23 @@ const Signup = (props) => {
       return;
     }
     const { name, email, password } = credentials;
-    const response = await fetch("https://inotebook-xew3.onrender.com/api/auth/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
+    const response = await fetch(
+      "https://inotebook-xew3.onrender.com/api/auth/createuser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ name, email, password }),
+      }
+    );
+
     const json = await response.json();
-    console.log(json);
     if (json.success) {
-      // save the authtoken and redirect
       localStorage.setItem("token", json.authToken);
       navigate("/");
-      props.showAlert("Account created successfully !", "success");
+      props.showAlert("Account created successfully!", "success");
     } else {
       props.showAlert(json.error || "Invalid credentials", "danger");
     }
@@ -45,71 +45,73 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="container mt-3">
-      <h2>Create an account to use iNoteBook</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-            required
-          />
-        </div>
+    <div className="signup-container">
+      <div className="signup-card">
+        <h2 className="signup-heading">✨ Create an Account</h2>
+        <form onSubmit={handleSubmit} className="signup-form">
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label fw-semibold">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-control input-field"
+              id="name"
+              name="name"
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            onChange={onChange}
-            required
-            minLength={8}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="cpassword"
-            name="cpassword"
-            onChange={onChange}
-            required
-            minLength={8}
-          />
-        </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label fw-semibold">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control input-field"
+              id="email"
+              name="email"
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn btn-primary">
-          Sign up
-        </button>
-      </form>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label fw-semibold">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control input-field"
+              id="password"
+              name="password"
+              onChange={onChange}
+              required
+              minLength={8}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="cpassword" className="form-label fw-semibold">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              className="form-control input-field"
+              id="cpassword"
+              name="cpassword"
+              onChange={onChange}
+              required
+              minLength={8}
+            />
+          </div>
+
+          <button type="submit" className="btn btn-signup">
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

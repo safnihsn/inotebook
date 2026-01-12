@@ -1,0 +1,49 @@
+/* Card container */
+.addnote-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.addnote-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Title */
+.addnote-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs */
+.input-field {
+  border-radius: 0.6rem;
+  border: 1px solid #d1d5db;
+  padding: 0.7rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Button */
+.btn-add {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.8rem;
+  border-radius: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #4338ca, #2563eb);
+}
