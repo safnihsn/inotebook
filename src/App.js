@@ -7,6 +7,7 @@ import NoteState from "./context/notes/NotesState";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 function App() {
@@ -26,19 +27,20 @@ function App() {
       <NoteState>
         <BrowserRouter>
           <Navbar />
-          <div style={{ height: "50px" }}>
+          <div style={{ height: 100 }} className="mt-3">
             {alert && <Alert alert={alert} />}
           </div>
-
-          <div className="container">
+          <div className="">
             <Routes>
-              <Route path="/" element={<Home showAlert={showAlert} />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/" element={<div className="container"> <Home showAlert={showAlert} />  </div> } />
+              <Route path="/about" element={<><About /> <Footer /></>}/>
               <Route path="/login" element={<Login showAlert={showAlert} />} />
+              
               <Route
                 path="/signup"
                 element={<Signup showAlert={showAlert} />}
               />
+              
             </Routes>
           </div>
         </BrowserRouter>
