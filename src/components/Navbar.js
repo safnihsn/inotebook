@@ -1,9 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  let navigate = useNavigate();
-  let location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLoggedIn = localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -11,108 +11,69 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar">
-      <div className="container-fluid">
-        <Link className="navbar-brand navv" to="/">
-          iNotebook
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/" ? "active" : ""
-                }`}
-                active
-                aria-current="page"
-                to="/"
+    <nav className="bg-white bg-opacity-90 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              iNotebook
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-6">
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/about"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              About
+            </Link>
+
+            {!isLoggedIn ? (
+              <div className="flex items-center gap-3">
+                <Link
+                  to="/login"
+                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold px-5 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 bg-red-50 text-red-600 text-sm font-semibold px-5 py-2 rounded-lg hover:bg-red-100 transition-all duration-200"
               >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
-                to="/about"
-              >
-                About
-              </Link>
-            </li>
-            {/* <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li> */}
-            {/* <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-            </li> */}
-          </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
-          {!localStorage.getItem("token") ? (
-            <>
-              <Link className="btn custom-btn mx-2" to="/login" role="button">
-                Login
-              </Link>
-              <Link className="btn custom-btn mx-2" to="/signup" role="button">
-                Sign Up
-              </Link>
-            </>
-          ) : (
-            <button onClick={handleLogout} className="btn btn-primary">
-              Log out
-            </button>
-          )}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>
