@@ -1,0 +1,75 @@
+/* ------------------
+   Modal Styling
+------------------- */
+.custom-modal .modal-content {
+  border-radius: 1.2rem;
+  background: #ffffff;
+  padding: 1rem;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Form inputs */
+.input-field {
+  border-radius: 0.6rem;
+  border: 1px solid #d1d5db;
+  padding: 0.7rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Modal buttons */
+.modal-footer .btn-primary {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #4338ca, #2563eb);
+}
+
+.modal-footer .btn-light {
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease;
+}
+
+.modal-footer .btn-light:hover {
+  background: #f3f4f6;
+}
+
+/* ------------------
+   Notes Section
+------------------- */
+.notes-section {
+  padding: 1rem;
+}
+
+.notes-title {
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.container {
+  font-style: italic;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}

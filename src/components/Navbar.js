@@ -1,9 +1,25 @@
-import { Link, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
   let navigate = useNavigate();
   let location = useLocation();
+
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  // Apply theme on mount + when darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -11,10 +27,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar">
+    <nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
       <div className="container-fluid">
-        <Link className="navbar-brand navv" to="/">
-          iNotebook
+        <Link className="navbar-brand brand-text" to="/">
+          i<span className="highlight">Notebook</span>
         </Link>
         <button
           className="navbar-toggler"
@@ -27,15 +43,12 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link
-                className={`nav-link ${
-                  location.pathname === "/" ? "active" : ""
-                }`}
-                active
-                aria-current="page"
+                className={`nav-link ${location.pathname === "/" ? "active-link" : ""}`}
                 to="/"
               >
                 Home
@@ -43,73 +56,30 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link
-                className={`nav-link ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/about" ? "active-link" : ""}`}
                 to="/about"
               >
                 About
               </Link>
             </li>
-            {/* <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li> */}
-            {/* <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-            </li> */}
           </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
+
+          {/* Dark Mode Toggle */}
+          <div className="theme-toggle mx-3" onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? "🌙" : "☀️"}
+          </div>
+
           {!localStorage.getItem("token") ? (
-            <>
-              <Link className="btn custom-btn mx-2" to="/login" role="button">
+            <div className="d-flex">
+              <Link className="btn nav-btn mx-2" to="/login" role="button">
                 Login
               </Link>
-              <Link className="btn custom-btn mx-2" to="/signup" role="button">
+              <Link className="btn nav-btn mx-2" to="/signup" role="button">
                 Sign Up
               </Link>
-            </>
+            </div>
           ) : (
-            <button onClick={handleLogout} className="btn btn-primary">
+            <button onClick={handleLogout} className="btn logout-btn">
               Log out
             </button>
           )}
